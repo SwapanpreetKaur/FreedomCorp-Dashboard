@@ -42,7 +42,7 @@ TimeLine.prototype.initVis = function(){
     vis.brush = d3.brushX()
                   .handleSize(10)
                   .extent([[0, 0],[vis.innerWidth, vis.innerHeight]])
-                  .on('brush end', brushed)
+                  .on('brush end',brushed)
 
     // Append brush component with g element or calling brush
     vis.brushComponent = vis.g.append('g')

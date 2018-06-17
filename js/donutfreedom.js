@@ -7,12 +7,12 @@ DonutChart = function(_parentElement){
 DonutChart.prototype.initVis = function(){
 
 	var vis = this;
-
 	vis.margin = { left:40, right:100, top:40, bottom:10 };
 	vis.outerWidth = 350;
 	vis.outerHeight = 140;
 	vis.innerWidth = vis.outerWidth - vis.margin.left - vis.margin.right;
 	vis.innerHeight = vis.outerHeight - vis.margin.top - vis.margin.bottom;
+
 	vis.radius = Math.min(vis.innerWidth,vis.innerHeight) / 2;
 
     vis.svg = d3.select(vis.parentElement)
@@ -27,7 +27,7 @@ DonutChart.prototype.initVis = function(){
                 .padAngle(0.03)
                 .value(function(d){ return d.count; })
                 .sort(null);
-    
+
     // Arc generator
     vis.arc = d3.arc()
                 .innerRadius(vis.radius - 15)
@@ -50,7 +50,6 @@ DonutChart.prototype.initVis = function(){
 // nest according to company-size
 // sum up the each company-size values
 DonutChart.prototype.wrangleData = function(){
-
 	var vis = this;
 
 	sizeNest = d3.nest()
@@ -68,7 +67,6 @@ vis.updateVis();
 }
 
 DonutChart.prototype.updateVis = function(){
-
 	var vis = this;
     
     // Pass data to pie(), gives pie layout

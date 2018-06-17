@@ -90,10 +90,10 @@ DonutChart.prototype.updateVis = function(){
     
     // arctween method used for transitions
     function arcTween(d){
-		var i = d3.interpolate(this._current, d);
-		this._current = i(0);
-		return function(t) { return vis.arc(i(t)); };
-	}
+    	var i = d3.interpolate(this._current, d);
+    	this._current = i(0);
+    	return function(t) { return vis.arc(i(t)); };
+    }
 }
 
 DonutChart.prototype.addLegend = function(){
@@ -117,9 +117,9 @@ DonutChart.prototype.addLegend = function(){
 
 	legendRow.append('text')
 	         .attr('class','legendText')
-			 .attr('x',-10)
-			 .attr('y',10)
-			 .attr('text-anchor','end') 
-			 .text(company_size);  
+	         .attr('x',-10)
+	         .attr('y',10)
+	         .attr('text-anchor','end') 
+	         .text(company_size);  
 	})
 }

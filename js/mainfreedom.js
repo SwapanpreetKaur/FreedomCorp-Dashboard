@@ -29,7 +29,7 @@ d3.json('calls.json').then(function(data){
 
 $('#var-select').on('change',function(){
 	stackedArea.wrangleData();
-}
+})
 
 function brushed(){
 
@@ -40,7 +40,7 @@ function brushed(){
 	$('#dateLabel2').text(formatTime(newValues[1]))
 
 	calls = allCalls.filter(function(d){
-        return ((d.date >= newValues[0]) && (d.date <= newValues[1]))
+        return ((d.date > newValues[0]) && (d.date < newValues[1]))
     })
 
     stackedArea.wrangleData();

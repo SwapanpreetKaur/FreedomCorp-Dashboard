@@ -7,6 +7,7 @@ FreedomCorp’s sales force is divided into 4 teams, who each control distribution
 * West
 * South
 * Midwest
+
 Every day, each team makes phone calls to small businesses in their region, to see if they can sell any of their products to them.  For every call, the company keeps a record of the call duration, the result of the call (if a sale was made, rejected, or if the call was stalled), the dollar value of revenue that the call generated, the category that the sale fell into, and the number of raw units that had been purchased. 
 
 # How to run a project

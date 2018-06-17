@@ -7,6 +7,7 @@ DonutChart = function(_parentElement){
 DonutChart.prototype.initVis = function(){
 
 	var vis = this;
+
 	vis.margin = { left:40, right:100, top:40, bottom:10 };
 	vis.outerWidth = 350;
 	vis.outerHeight = 140;
@@ -50,6 +51,7 @@ DonutChart.prototype.initVis = function(){
 // nest according to company-size
 // sum up the each company-size values
 DonutChart.prototype.wrangleData = function(){
+
 	var vis = this;
 
 	sizeNest = d3.nest()
@@ -67,9 +69,9 @@ vis.updateVis();
 }
 
 DonutChart.prototype.updateVis = function(){
+
 	var vis = this;
-    
-    // Pass data to pie(), gives pie layout
+	// Pass data to pie(), gives pie layout
 	vis.path = vis.g.selectAll('path')
 	              .data(vis.pie(vis.dataFiltered));
 

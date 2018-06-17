@@ -83,8 +83,8 @@ DonutChart.prototype.updateVis = function(){
 	   .transition()
 	   .duration(700)
 	   .attrTween('d',arcTween);
-    
-    // Update arcs on screen
+
+	// Update arcs on screen
 	vis.path.attr('class','update arc')
 	   .transition()
 	   .duration(700)

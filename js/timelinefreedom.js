@@ -15,8 +15,8 @@ TimeLine.prototype.initVis = function(){
     vis.innerHeight = vis.outerHeight - vis.margin.top - vis.margin.bottom;
 
     vis.svg = d3.select(vis.parentElement).append('svg')
-    		        .attr('width',outerWidth)
-    		        .attr('height',outerHeight)
+                .attr('width',outerWidth)
+                .attr('height',outerHeight)
 
     vis.t = function(d) { return d3.transition().duration(1000); }
 
@@ -31,8 +31,8 @@ TimeLine.prototype.initVis = function(){
                       .ticks(4);
 
     vis.xAxis = vis.g.append('g')
-      			       .attr('class','x axis')
-      			       .attr('transform','translate(0,' + vis.innerHeight +')');
+                   .attr('class','x axis')
+                   .attr('transform','translate(0,' + vis.innerHeight +')');
 
     // Add area path for first time
     vis.areaPath = vis.g.append('path')
@@ -40,8 +40,8 @@ TimeLine.prototype.initVis = function(){
 
     // Intiliaze brush component or brush generator
     vis.brush = d3.brushX()
-			            .handleSize(10)
-			            .extent([[0, 0],[vis.innerWidth, vis.innerHeight]])
+                  .handleSize(10)
+                  .extent([[0, 0],[vis.innerWidth, vis.innerHeight]])
                   .on('brush end', brushed)
 
     // Append brush component with g element or calling brush

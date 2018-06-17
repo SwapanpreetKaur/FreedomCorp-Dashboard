@@ -9,18 +9,18 @@ BarChart = function(_parentElement,_variable,_title){
 
 BarChart.prototype.initVis = function(){
 
-  	var vis = this;
+  var vis = this;
 
-  	vis.margin = { left:60, right:50, top:30, bottom:30 };
-  	vis.outerHeight = 130;
-  	vis.outerWidth = 350;
+    vis.margin = { left:60, right:50, top:30, bottom:30 };
+    vis.outerHeight = 130;
+    vis.outerWidth = 350;
     vis.innerHeight = vis.outerHeight - vis.margin.top - vis.margin.bottom;
     vis.innerWidth = vis.outerWidth - vis.margin.left - vis.margin.right;
 
     vis.svg = d3.select(vis.parentElement)
-      	        .append('svg')
-      	        .attr('width',vis.outerWidth)
-      	        .attr('height',vis.outerHeight);
+                .append('svg')
+                .attr('width',vis.outerWidth)
+                .attr('height',vis.outerHeight);
 
     vis.g = vis.svg.append('g').attr('transform','translate(' + vis.margin.left + ', ' + vis.margin.top + ')');
 
@@ -61,27 +61,25 @@ BarChart.prototype.initVis = function(){
     vis.t = function(d){ return d3.transition().duration(1000); }
 
     vis.wrangleData();
-
 }
 
 // Nest data according to category
 // Calculate average sum of all categories according to units-sold etc
 BarChart.prototype.wrangleData = function(){
 
-  	var vis = this;
+  var vis = this;
+  vis.categoryNested = d3.nest()
+                         .key(function(d){ return d.category; })
+                         .entries(calls)
 
-  	vis.categoryNested = d3.nest()
-  	                       .key(function(d){ return d.category; })
-  	                       .entries(calls)
-
-  	vis.dataFiltered = vis.categoryNested.map(function(category){
-  		return {
-  			category : category.key,
-  			size : (category.values.reduce(function(accu,curr){
-  				return accu + curr[vis.variable];
-  			},0) / category.values.length)
-  		} 
-  	})
+  vis.dataFiltered = vis.categoryNested.map(function(category){
+      return {
+        category : category.key,
+        size : (category.values.reduce(function(accu,curr){
+          return accu + curr[vis.variable];
+        },0) / category.values.length)
+      } 
+    })
     
     vis.updateVis();
    
@@ -89,9 +87,9 @@ BarChart.prototype.wrangleData = function(){
 
 BarChart.prototype.updateVis = function(){
 
-  	var vis = this;
+  var vis = this;
 
-    vis.yScale.domain([0,d3.max(vis.dataFiltered,function(d){ return d.size; })]);
+  vis.yScale.domain([0,d3.max(vis.dataFiltered,function(d){ return d.size; })]);
 
     vis.xAxisCall.scale(vis.xScale);
     vis.xAxis.transition(vis.t()).call(vis.xAxisCall);
@@ -127,4 +125,3 @@ BarChart.prototype.updateVis = function(){
        .style('fill-opacity',0.3)
        .remove();
 }
-

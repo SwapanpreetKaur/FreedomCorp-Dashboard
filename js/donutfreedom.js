@@ -110,10 +110,11 @@ DonutChart.prototype.addLegend = function(){
                                .attr('transform','translate(0,' + (i * 20) + ')');
 
 	legendRow.append('rect')
-             .attr('class','legendRect')
-             .attr('width',10)
-             .attr('height',10)
-             .attr('fill',function(d) { return vis.color(company_size); });
+	         .attr('class','legendRect')
+	         .attr('width',10)
+	         .attr('height',10)
+	         .attr('fill',function(d) { return vis.color(company_size); });
+	         
 	legendRow.append('text')
 			 .attr('class','legendText')
 			 .attr('x',-10)

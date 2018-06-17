@@ -25,12 +25,11 @@ d3.json('calls.json').then(function(data){
     unitsBar = new BarChart('#units-sold','units_sold','Average units_sold')
     revenueBar = new BarChart('#revenue','call_revenue','Average revenue')
     durationBar = new BarChart('#duration','call_duration','Average duration')
-
 })
 
 $('#var-select').on('change',function(){
-		stackedArea.wrangleData();
-	})
+	stackedArea.wrangleData();
+}
 
 function brushed(){
 
@@ -49,5 +48,4 @@ function brushed(){
     unitsBar.wrangleData();
     revenueBar.wrangleData();
     durationBar.wrangleData();
-
 }

@@ -2,7 +2,7 @@ DonutChart = function(_parentElement){
 	this.parentElement = _parentElement;
 
 	this.initVis();
-};
+}
 
 DonutChart.prototype.initVis = function(){
 
@@ -50,6 +50,7 @@ DonutChart.prototype.initVis = function(){
 // nest according to company-size
 // sum up the each company-size values
 DonutChart.prototype.wrangleData = function(){
+
 	var vis = this;
 
 	sizeNest = d3.nest()
@@ -67,6 +68,7 @@ vis.updateVis();
 }
 
 DonutChart.prototype.updateVis = function(){
+
 	var vis = this;
     
     // Pass data to pie(), gives pie layout

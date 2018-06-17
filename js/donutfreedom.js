@@ -20,13 +20,13 @@ DonutChart.prototype.initVis = function(){
 		        .attr('width',vis.outerWidth)
 		        .attr('height',vis.outerHeight);
 
-    vis.g = vis.svg.append('g')
-               .attr('transform','translate(' + (vis.margin.left + (vis.innerWidth / 2) - 50) + ', ' + (vis.margin.top + (vis.innerHeight / 2)) + ')');
+	vis.g = vis.svg.append('g')
+	           .attr('transform','translate(' + (vis.margin.left + (vis.innerWidth / 2) - 50) + ', ' + (vis.margin.top + (vis.innerHeight / 2)) + ')');
 
-    vis.pie = d3.pie()
-                .padAngle(0.03)
-                .value(function(d){ return d.count; })
-                .sort(null);
+	vis.pie = d3.pie()
+	            .padAngle(0.03)
+	            .value(function(d){ return d.count; })
+	            .sort(null);
 
 	// Arc generator
 	vis.arc = d3.arc()
@@ -114,11 +114,11 @@ DonutChart.prototype.addLegend = function(){
              .attr('width',10)
              .attr('height',10)
              .attr('fill',function(d) { return vis.color(company_size); });
-    legendRow.append('text')
-    .attr('class','legendText')
-    .attr('x',-10)
-    .attr('y',10)
-    .attr('text-anchor','end') 
-    .text(company_size);  
+	legendRow.append('text')
+			 .attr('class','legendText')
+			 .attr('x',-10)
+			 .attr('y',10)
+			 .attr('text-anchor','end') 
+			 .text(company_size);  
 	})
 }

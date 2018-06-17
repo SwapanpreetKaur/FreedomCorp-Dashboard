@@ -1,6 +1,5 @@
 DonutChart = function(_parentElement){
 	this.parentElement = _parentElement;
-
 	this.initVis();
 }
 
@@ -17,9 +16,9 @@ DonutChart.prototype.initVis = function(){
 	vis.radius = Math.min(vis.innerWidth,vis.innerHeight) / 2;
 
 	vis.svg = d3.select(vis.parentElement)
-		        .append('svg')
-		        .attr('width',vis.outerWidth)
-		        .attr('height',vis.outerHeight);
+	            .append('svg')
+	            .attr('width',vis.outerWidth)
+	            .attr('height',vis.outerHeight);
 
 	vis.g = vis.svg.append('g')
 	           .attr('transform','translate(' + (vis.margin.left + (vis.innerWidth / 2) - 50) + ', ' + (vis.margin.top + (vis.innerHeight / 2)) + ')');
@@ -71,6 +70,7 @@ vis.updateVis();
 DonutChart.prototype.updateVis = function(){
 
 	var vis = this;
+
 	// Pass data to pie(), gives pie layout
 	vis.path = vis.g.selectAll('path')
 	              .data(vis.pie(vis.dataFiltered));

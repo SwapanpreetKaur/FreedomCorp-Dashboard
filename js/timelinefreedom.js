@@ -15,13 +15,13 @@ TimeLine.prototype.initVis = function(){
     vis.innerHeight = vis.outerHeight - vis.margin.top - vis.margin.bottom;
 
     vis.svg = d3.select(vis.parentElement).append('svg')
-		        .attr('width',outerWidth)
-		        .attr('height',outerHeight)
+    		        .attr('width',outerWidth)
+    		        .attr('height',outerHeight)
 
     vis.t = function(d) { return d3.transition().duration(1000); }
 
     vis.g = vis.svg.append('g')
-            .attr('transform','translate(' + vis.margin.left + ',' + vis.margin.top + ')');
+               .attr('transform','translate(' + vis.margin.left + ',' + vis.margin.top + ')');
 
     vis.x = d3.scaleTime().range([0, vis.innerWidth]);
 
@@ -46,8 +46,8 @@ TimeLine.prototype.initVis = function(){
 
     // Append brush component with g element or calling brush
     vis.brushComponent = vis.g.append('g')
-					                  .attr('class', 'brush')
-					                  .call(vis.brush);
+                            .attr('class', 'brush')
+                            .call(vis.brush);
 
     vis.wrangleData();
 }
@@ -58,15 +58,14 @@ TimeLine.prototype.wrangleData = function(){
     var vis = this;
 
     dateNest = d3.nest()
-                     .key(function(d){ return formatTime(d.date); })
-                     .entries(calls)
+                 .key(function(d){ return formatTime(d.date); })
+                 .entries(calls)
 
     vis.dataFiltered = dateNest.map(function(d){
     	return {
     		date: d.key,
     		sum: d.values.reduce(function(accu,curr)
-    		{
-    			return accu + curr[vis.variable];
+    		{ return accu + curr[vis.variable];
     		},0)
     	}
     })

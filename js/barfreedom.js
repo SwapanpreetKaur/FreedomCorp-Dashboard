@@ -9,7 +9,7 @@ BarChart = function(_parentElement,_variable,_title){
 
 BarChart.prototype.initVis = function(){
 
-  var vis = this;
+    var vis = this;
 
     vis.margin = { left:60, right:50, top:30, bottom:30 };
     vis.outerHeight = 130;
@@ -67,29 +67,29 @@ BarChart.prototype.initVis = function(){
 // Calculate average sum of all categories according to units-sold etc
 BarChart.prototype.wrangleData = function(){
 
-  var vis = this;
-  vis.categoryNested = d3.nest()
-                         .key(function(d){ return d.category; })
-                         .entries(calls)
+    var vis = this;
+    vis.categoryNested = d3.nest()
+                           .key(function(d){ return d.category; })
+                           .entries(calls)
 
-  vis.dataFiltered = vis.categoryNested.map(function(category){
-      return {
-        category : category.key,
-        size : (category.values.reduce(function(accu,curr){
-          return accu + curr[vis.variable];
-        },0) / category.values.length)
-      } 
-    })
-    
-    vis.updateVis();
+    vis.dataFiltered = vis.categoryNested.map(function(category){
+        return {
+          category : category.key,
+          size : (category.values.reduce(function(accu,curr){
+            return accu + curr[vis.variable];
+          },0) / category.values.length)
+        } 
+      })
+      
+      vis.updateVis();
    
 }
 
 BarChart.prototype.updateVis = function(){
 
-  var vis = this;
+    var vis = this;
 
-  vis.yScale.domain([0,d3.max(vis.dataFiltered,function(d){ return d.size; })]);
+    vis.yScale.domain([0,d3.max(vis.dataFiltered,function(d){ return d.size; })]);
 
     vis.xAxisCall.scale(vis.xScale);
     vis.xAxis.transition(vis.t()).call(vis.xAxisCall);

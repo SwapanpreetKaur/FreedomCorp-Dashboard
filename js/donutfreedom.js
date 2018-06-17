@@ -15,35 +15,35 @@ DonutChart.prototype.initVis = function(){
 
 	vis.radius = Math.min(vis.innerWidth,vis.innerHeight) / 2;
 
-    vis.svg = d3.select(vis.parentElement)
+	vis.svg = d3.select(vis.parentElement)
 		        .append('svg')
 		        .attr('width',vis.outerWidth)
 		        .attr('height',vis.outerHeight);
-    
+
     vis.g = vis.svg.append('g')
                .attr('transform','translate(' + (vis.margin.left + (vis.innerWidth / 2) - 50) + ', ' + (vis.margin.top + (vis.innerHeight / 2)) + ')');
-    
+
     vis.pie = d3.pie()
                 .padAngle(0.03)
                 .value(function(d){ return d.count; })
                 .sort(null);
 
-    // Arc generator
-    vis.arc = d3.arc()
-                .innerRadius(vis.radius - 15)
-                .outerRadius(vis.radius);
+	// Arc generator
+	vis.arc = d3.arc()
+	            .innerRadius(vis.radius - 15)
+	            .outerRadius(vis.radius);
 
-    vis.g.append('text')
-       .attr('class','title')
-       .attr('y',-60)
-       .attr('x',-90)
-       .attr('font-size','12px')
-       .attr('text-anchor','start')
-       .text('Company size')
+	vis.g.append('text')
+	   .attr('class','title')
+	   .attr('y',-60)
+	   .attr('x',-90)
+	   .attr('font-size','12px')
+	   .attr('text-anchor','start')
+	   .text('Company size')
 
-    vis.color = d3.scaleOrdinal(d3.schemeOrRd[0,3]);
+	vis.color = d3.scaleOrdinal(d3.schemeOrRd[0,3]);
 
-    vis.addLegend();
+	vis.addLegend();
 	vis.wrangleData();
 }
 
@@ -102,7 +102,6 @@ DonutChart.prototype.addLegend = function(){
 
 	var legendG = vis.g.append('g')
 	                 .attr('transform','translate(' + 150 + ', ' + -30 + ')')
-	               
 
 	var legendArray = ['small','medium','large'];
 
@@ -115,12 +114,11 @@ DonutChart.prototype.addLegend = function(){
              .attr('width',10)
              .attr('height',10)
              .attr('fill',function(d) { return vis.color(company_size); });
-
     legendRow.append('text')
-	         .attr('class','legendText')
-	         .attr('x',-10)
-	         .attr('y',10)
-	         .attr('text-anchor','end') 
-	         .text(company_size);  
+    .attr('class','legendText')
+    .attr('x',-10)
+    .attr('y',10)
+    .attr('text-anchor','end') 
+    .text(company_size);  
 	})
 }

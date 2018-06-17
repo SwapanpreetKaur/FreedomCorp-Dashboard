@@ -151,4 +151,3 @@ StackedAreaChart.prototype.addLegend = function(){
            .text(team);  
   })
 }
-}

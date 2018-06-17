@@ -1,0 +1,32 @@
+#logo {
+  height: 45px;
+  position:fixed; top:12; left:10;
+}
+
+body {
+  background-color: #F1F3F3    
+}
+
+h1 {
+	text-align: center;
+  padding-bottom: 4px;
+}
+
+.axis path,.axis line{
+	fill: none;
+    stroke-width: 2px;
+    shape-rendering: crispEdges;
+    stroke: #D4D8DA;
+}
+
+.overlay {
+  fill: none;
+  pointer-events: all;
+}
+
+.focus circle {
+  fill: #F1F3F3;
+  stroke: #777;
+  stroke-width: 3px;
+}
+  

@@ -17,11 +17,11 @@ d3.json('calls.json').then(function(data){
 	})
 
 	allCalls = data;
-    calls = data;
+	calls = data;
 
     stackedArea = new StackedAreaChart('#stacked-area')
-	timeline = new TimeLine('#timeline','call_revenue')
-	donutChart = new DonutChart('#company-size')
+    timeline = new TimeLine('#timeline','call_revenue')
+    donutChart = new DonutChart('#company-size')
     unitsBar = new BarChart('#units-sold','units_sold','Average units_sold')
     revenueBar = new BarChart('#revenue','call_revenue','Average revenue')
     durationBar = new BarChart('#duration','call_duration','Average duration')
@@ -44,7 +44,7 @@ function brushed(){
         return ((d.date >= newValues[0]) && (d.date <= newValues[1]))
     })
 
-	stackedArea.wrangleData();
+    stackedArea.wrangleData();
     donutChart.wrangleData();
     unitsBar.wrangleData();
     revenueBar.wrangleData();

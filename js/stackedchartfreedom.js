@@ -19,10 +19,10 @@ StackedAreaChart.prototype.initVis = function(){
               .attr('width',vis.outerWidth)
               .attr('height',vis.outerHeight);
 
-    vis.g = vis.svg.append('g')
+  vis.g = vis.svg.append('g')
              .attr('transform','translate(' + vis.margin.left +  ', ' + vis.margin.top + ')');
 
-    vis.color = d3.scaleOrdinal(d3.schemePuOr[0,4]);
+  vis.color = d3.scaleOrdinal(d3.schemePuOr[0,4]);
 
   vis.x = d3.scaleTime().range([0,vis.innerWidth]);
   vis.y = d3.scaleLinear().range([vis.innerHeight,0]);

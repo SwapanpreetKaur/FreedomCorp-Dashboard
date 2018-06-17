@@ -27,33 +27,33 @@ StackedAreaChart.prototype.initVis = function(){
   vis.x = d3.scaleTime().range([0,vis.innerWidth]);
   vis.y = d3.scaleLinear().range([vis.innerHeight,0]);
 
-    vis.yAxisCall = d3.axisLeft();
+  vis.yAxisCall = d3.axisLeft();
 
-    vis.xAxisCall = d3.axisBottom()
+  vis.xAxisCall = d3.axisBottom()
                     .ticks(4);
 
-    vis.xAxis = vis.g.append('g')
+  vis.xAxis = vis.g.append('g')
                  .attr('class','x axis')
                  .attr('transform','translate(0,' + vis.innerHeight +')');
 
-    vis.yAxis = vis.g.append('g')
+  vis.yAxis = vis.g.append('g')
                  .attr('class','y axis');
   
-    // Passing keys method to stack
-    vis.stack = d3.stack()
+  // Passing keys method to stack
+  vis.stack = d3.stack()
                 .keys(['west','south','northeast','midwest']);
 
-    // Path generator for area variable
-    vis.area = d3.area()
+  // Path generator for area variable
+  vis.area = d3.area()
                .x(function(d) { return vis.x(parseTime(d.data.date)); })
                .y0(function(d) { return vis.y(d[0]); })
                .y1(function(d) { return vis.y(d[1]); });
 
-   // Add transitions
-   vis.t = function(d) { return d3.transition().duration(1000); }
+  // Add transitions
+  vis.t = function(d) { return d3.transition().duration(1000); }
 
-   vis.addLegend();
-   vis.wrangleData();
+  vis.addLegend();
+  vis.wrangleData();
 }
 
 // Nest data according to date 
@@ -93,7 +93,7 @@ StackedAreaChart.prototype.updateVis = function(){
                  return d3.sum(vals);
     });
 
-     vis.x.domain(d3.extent(vis.dataFiltered, function(d){  return parseTime(d.date); }));
+  vis.x.domain(d3.extent(vis.dataFiltered, function(d){  return parseTime(d.date); }));
   vis.y.domain([0, vis.maxDateVal]);
 
   vis.xAxisCall.scale(vis.x);
